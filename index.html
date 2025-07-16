@@ -3,241 +3,261 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beauty Platform for Sellers</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome for icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
+  <title>Beauty Platform</title>
   <style>
-    :root {
-      --primary-color: #d63384;
-      --secondary-color: #c82373;
-      --text-color: #333;
-      --bg-overlay: rgba(22, 12, 12, 0.6);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      font-family: 'Poppins', sans-serif;
-      color: var(--text-color);
-      background: url('https://wallpaperaccess.com/full/1496231.jpg') center/cover fixed no-repeat;
-      position: relative;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f8f8f8;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--bg-overlay);
-      z-index: -1;
-    }
-
-    header {
+    /* Navbar */
+    .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px;
+      padding: 15px 20px;
       background-color: #fff;
-      border-bottom: 1px solid #ddd;
-      flex-wrap: wrap;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .logo {
-      font-size: 1.8em;
-      font-weight: 600;
-      color: var(--primary-color);
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff4081;
     }
 
-    .language-switcher select {
-      padding: 8px;
-      font-size: 1em;
-      margin-left: 10px;
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
 
-    .cta-button {
-      background-color: var(--primary-color);
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
+    #language {
+      padding: 6px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #f0f0f0;
     }
 
-    .cta-button:hover {
-      background-color: var(--secondary-color);
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 25px;
+      height: 20px;
+      cursor: pointer;
     }
 
-    section {
-      padding: 40px 20px;
-      max-width: 1200px;
+    .hamburger .bar {
+      height: 3px;
+      background-color: #333;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .hamburger.change .bar:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.change .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.change .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .container {
+      max-width: 600px;
       margin: auto;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
-
-    h1, h2 {
-      margin-bottom: 20px;
-      color: var(--primary-color);
-    }
-
-    p, li {
-      font-size: 1.1em;
-      margin-bottom: 10px;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    ul li::before {
-      content: "✓";
-      color: var(--primary-color);
-      margin-right: 8px;
-    }
-
-    img {
-      width: 100%;
-      max-height: 400px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
-    th, td {
-      padding: 12px;
-      border: 1px solid #ddd;
-      text-align: left;
-    }
-
-    footer {
-      text-align: center;
       padding: 20px;
       background-color: #fff;
-      border-top: 1px solid #ddd;
     }
 
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    h1, h2, h3 {
+      text-align: center;
+      color: #333;
+    }
 
-      .cta-button {
-        margin-top: 10px;
-      }
+    .content img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
 
-      section {
-        padding: 20px;
+    .features ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .features li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .checkmark {
+      color: #28a745;
+      font-size: 20px;
+      margin-right: 10px;
+    }
+
+    .cta {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .cta button {
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #fff;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    .bottom-nav a img {
+      width: 24px;
+      height: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .features li {
+        flex-direction: row;
+        align-items: center;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">Beauty Platform</div>
-    <div class="language-switcher">
-      <label for="languageSelector">🌐 Language:</label>
-      <select id="languageSelector">
-        <option value="en">English</option>
-        <option value="ko">한국어</option>
+  <!-- Navbar -->
+  <header class="navbar" style="display: flex; justify-content: center; align-items: center; position: relative;">
+    <!-- Centered Logo -->
+    <div class="logo" style="color: #000;">Beauty Platform</div>
+  
+    <!-- Top-right Controls -->
+    <div class="nav-controls" style="position: absolute; right: 20px; display: flex; align-items: center; gap: 10px;">
+      <!-- Modern Language Selector with Globe Icon -->
+      <label for="language" style="font-size: 1.2rem;">🌐</label>
+      <select id="language" onchange="changeLanguage()" style="padding: 6px; font-size: 1rem; border-radius: 5px; border: 1px solid #ccc;">
+        <option value="en">EN</option>
+        <option value="ko">KO</option>
       </select>
+  
+      <!-- Modern Hamburger Menu Icon (SVG) -->
+      <button onclick="toggleMenu(this)" aria-label="Menu" style="background: none; border: none; cursor: pointer;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
     </div>
-    <a href="#signup" class="cta-button">Register for Free Now</a>
   </header>
+  
 
-  <section class="hero">
-    <h1 data-en="Show your products to more customers" data-ko="당신의 제품을 더 많은 고객에게 보여주세요"></h1>
-    <p data-en="Start free on the new beauty platform" data-ko="새로운 뷰티 플랫폼에서 무료로 시작하세요"></p>
-    <img src="https://cdn.dribbble.com/userupload/14323676/file/original-7ab308b8991a8878277d310b9a2db6d2.png" alt="Beauty products on smartphone" loading="lazy" />
-  </section>
+  <!-- Content -->
+  <div class="container">
+    <h2 id="headline">Don't get lost in big marketplaces.<br>Start on a platform where beauty experts and customers wait for you!</h2>
+    <h3 id="subheading">Showcase your products directly in thousands of beauty experts' hands, offering advice, ratings, and reviews. Increase your sales at your fingertips.</h3>
 
-  <section class="benefits">
-    <h2 data-en="Why choose our platform?" data-ko="왜 우리 플랫폼을 선택해야 하나요?"></h2>
-    <ul>
-      <li data-en="Naturally exposed to beauty shop customers" data-ko="고객에게 자연스럽게 노출됩니다"></li>
-      <li data-en="Gain a new sales channel with free registration" data-ko="무료 등록으로 새로운 판매 채널 확보"></li>
-      <li data-en="Easy and quick start, no additional cost" data-ko="쉽고 빠른 시작, 추가 비용 없음"></li>
-    </ul>
-  </section>
+    <div class="content">
+      <img src="image/phone 1.PNG" alt="Cosmetics" />
+    </div>
 
-  <section class="how-it-works">
-    <h2 data-en="How It Works" data-ko="작동 방식"></h2>
-    <p data-en="Register your products for beauty salons, nail shops, and clinics to view and purchase."
-       data-ko="제품을 등록하면 뷰티샵, 네일샵, 클리닉의 고객들이 직접 보고 구매할 수 있습니다."></p>
-    <img src="https://cdn.dribbble.com/userupload/7356090/file/original-f1bd26da36fa988e6ac0b3416fd9f855.jpg" alt="Platform demo" loading="lazy" />
-  </section>
+    <div class="features">
+      <h2 id="featuresTitle">Why Choose Us</h2>
+      <ul>
+        <li><span class="checkmark">&#10003;</span><span id="feature1">Focused exposure to beauty professionals</span></li>
+        <li><span class="checkmark">&#10003;</span><span id="feature2">Unique sales channels connected to product experts</span></li>
+        <li><span class="checkmark">&#10003;</span><span id="feature3">Free services for experts to share reviews</span></li>
+        <li><span class="checkmark">&#10003;</span><span id="feature4">Global audience with a touch of a button</span></li>
+        <li><span class="checkmark">&#10003;</span><span id="feature5">Safe, simple registration process</span></li>
+      </ul>
+    </div>
 
-  <section class="sales-boost">
-    <h2 data-en="Sales Increase Case" data-ko="판매 증가 사례"></h2>
-    <p data-en="It changes just by registering! Real case of 30% sales increase"
-       data-ko="등록만으로 변화! 실제 30% 판매 증가 사례"></p>
-    <img src="https://wezom.com/Media/files/filemanager/blog/how-we-implemented-a-beauty-ecommerce-kimito-case-study/4.jpg" alt="Sales graph" loading="lazy" />
-  </section>
+    <div class="cta">
+      <p id="ctaText" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 15px;">
+        Register now and get your products in front of beauty experts!
+      </p>
+      <button id="ctaBtn" style="font-size: 1.2rem; padding: 14px 28px; font-weight: bold;">
+        Register for Free
+      </button>
+    </div>
 
-  <section class="industry-info">
-    <h2 data-en="For Sellers by Industry" data-ko="업종별 판매자 안내"></h2>
-    <table>
-      <tr>
-        <th data-en="Industry Name" data-ko="업종명"></th>
-        <th data-en="Description" data-ko="설명"></th>
-      </tr>
-      <tr>
-        <td data-en="Cosmetics Manufacturer" data-ko="화장품 제조업체"></td>
-        <td data-en="Skincare, color cosmetics" data-ko="스킨케어, 색조 화장품"></td>
-      </tr>
-      <tr>
-        <td data-en="Women’s Clothing Wholesaler" data-ko="여성 의류 도매업체"></td>
-        <td data-en="Fashion production and wholesale" data-ko="패션 생산 및 도매"></td>
-      </tr>
-    </table>
-  </section>
+  <!-- Bottom Navigation Icons -->
+  <div class="bottom-nav">
+    <a href="#"><img src="https://img.icons8.com/ios-filled/24/000000/home.png" alt="Home" /></a>
+    <a href="#"><img src="https://img.icons8.com/ios-filled/24/fa314a/search--v1.png" alt="Search" /></a>
+    <a href="#"><img src="https://img.icons8.com/ios-filled/24/fa314a/plus-math.png" alt="Add" /></a>
+    <a href="#"><img src="https://img.icons8.com/ios-filled/24/fa314a/user-male-circle.png" alt="Profile" /></a>
+  </div>
 
-  <section class="signup" id="signup">
-    <h2 data-en="Start free now and meet more customers!" data-ko="지금 무료로 시작하고 더 많은 고객을 만나보세요!"></h2>
-    <p data-en="Registration completed in just 3 minutes" data-ko="등록은 단 3분이면 완료됩니다"></p>
-    <a href="#" class="cta-button" data-en="Register for Free Now" data-ko="지금 무료 등록"></a>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Beauty Platform</p>
-  </footer>
-
+  <!-- Scripts -->
   <script>
-    const languageSelector = document.getElementById("languageSelector");
-
-    function switchLanguage(lang) {
-      const elements = document.querySelectorAll("[data-" + lang + "]");
-      elements.forEach(el => {
-        el.textContent = el.getAttribute("data-" + lang);
-      });
+    function toggleMenu(x) {
+      x.classList.toggle("change");
     }
 
-    languageSelector.addEventListener("change", (e) => {
-      switchLanguage(e.target.value);
-    });
+    const translations = {
+      en: {
+        headline: "Don't get lost in big marketplaces.<br>Start on a platform where beauty experts and customers wait for you!",
+        subheading: "Showcase your products directly in thousands of beauty experts' hands, offering advice, ratings, and reviews. Increase your sales at your fingertips.",
+        featuresTitle: "Why Choose Us",
+        feature1: "Focused exposure to beauty professionals",
+        feature2: "Unique sales channels connected to product experts",
+        feature3: "Free services for experts to share reviews",
+        feature4: "Global audience with a touch of a button",
+        feature5: "Safe, simple registration process",
+        ctaText: "Register now and get your products in front of beauty experts!",
+        ctaBtn: "Register for Free"
+      },
+      ko: {
+        headline: "대형 마켓에서 길을 잃지 마세요.<br>뷰티 전문가와 고객이 기다리는 플랫폼에서 시작하세요!",
+        subheading: "수천 명의 뷰티 전문가에게 직접 제품을 소개하고, 조언과 평가, 리뷰를 받을 수 있습니다. 손끝에서 판매를 늘려보세요.",
+        featuresTitle: "왜 우리를 선택해야 하나요?",
+        feature1: "뷰티 전문가에게 집중 노출",
+        feature2: "제품 전문가와 연결된 독특한 판매 채널",
+        feature3: "전문가 리뷰 공유를 위한 무료 서비스",
+        feature4: "버튼 하나로 글로벌 고객에게 도달",
+        feature5: "안전하고 간단한 가입 절차",
+        ctaText: "지금 등록하고 제품을 전문가에게 소개하세요!",
+        ctaBtn: "무료 등록하기"
+      }
+    };
 
-    window.addEventListener("DOMContentLoaded", () => {
-      switchLanguage(languageSelector.value);
-    });
+    function changeLanguage() {
+      const lang = document.getElementById("language").value;
+      const t = translations[lang];
+      document.getElementById("headline").innerHTML = t.headline;
+      document.getElementById("subheading").textContent = t.subheading;
+      document.getElementById("featuresTitle").textContent = t.featuresTitle;
+      document.getElementById("feature1").textContent = t.feature1;
+      document.getElementById("feature2").textContent = t.feature2;
+      document.getElementById("feature3").textContent = t.feature3;
+      document.getElementById("feature4").textContent = t.feature4;
+      document.getElementById("feature5").textContent = t.feature5;
+      document.getElementById("ctaText").textContent = t.ctaText;
+      document.getElementById("ctaBtn").textContent = t.ctaBtn;
+    }
+
+    // Optional: auto load default language
+    window.addEventListener("DOMContentLoaded", changeLanguage);
   </script>
 </body>
 </html>
