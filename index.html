@@ -8,7 +8,7 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #f8f8f8;
+      background-color: #f8f8f8 !important;
     }
 
     /* Navbar */
@@ -19,18 +19,21 @@
       padding: 15px 20px;
       background-color: #fff;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
     }
 
     .logo {
       font-size: 1.5rem;
       font-weight: bold;
-      color: #ff4081;
+      color: #000;
+      flex: 1;
+      text-align: center;
     }
 
     .nav-controls {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 10px;
     }
 
     #language {
@@ -41,30 +44,14 @@
       background-color: #f0f0f0;
     }
 
-    .hamburger {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 25px;
-      height: 20px;
+    .language-icon {
+      font-size: 1.2rem;
+    }
+
+    .menu-button {
+      background: none;
+      border: none;
       cursor: pointer;
-    }
-
-    .hamburger .bar {
-      height: 3px;
-      background-color: #333;
-      border-radius: 2px;
-      transition: 0.3s;
-    }
-
-    .hamburger.change .bar:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    .hamburger.change .bar:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.change .bar:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
     }
 
     .container {
@@ -112,8 +99,9 @@
       background-color: #ff4081;
       color: white;
       border: none;
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 14px 28px;
+      font-size: 1.2rem;
+      font-weight: bold;
       border-radius: 5px;
       cursor: pointer;
     }
@@ -137,31 +125,37 @@
     }
 
     @media (max-width: 600px) {
-      .features li {
-        flex-direction: row;
-        align-items: center;
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .logo {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .nav-controls {
+        justify-content: space-between;
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
   <!-- Navbar -->
-  <header class="navbar" style="display: flex; justify-content: center; align-items: center; position: relative;">
-    <!-- Centered Logo -->
-    <div class="logo" style="color: #000;">Beauty Platform</div>
-  
-    <!-- Top-right Controls -->
-    <div class="nav-controls" style="position: absolute; right: 20px; display: flex; align-items: center; gap: 10px;">
-      <!-- Modern Language Selector with Globe Icon -->
-      <label for="language" style="font-size: 1.2rem;">🌐</label>
-      <select id="language" onchange="changeLanguage()" style="padding: 6px; font-size: 1rem; border-radius: 5px; border: 1px solid #ccc;">
+  <header class="navbar">
+    <div class="logo">Beauty Platform</div>
+    <div class="nav-controls">
+      <label for="language" class="language-icon">🌐</label>
+      <select id="language" onchange="changeLanguage()">
         <option value="en">EN</option>
         <option value="ko">KO</option>
       </select>
-  
-      <!-- Modern Hamburger Menu Icon (SVG) -->
-      <button onclick="toggleMenu(this)" aria-label="Menu" style="background: none; border: none; cursor: pointer;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <button onclick="toggleMenu(this)" aria-label="Menu" class="menu-button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+             stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="3" y1="6" x2="21" y2="6"/>
           <line x1="3" y1="12" x2="21" y2="12"/>
           <line x1="3" y1="18" x2="21" y2="18"/>
@@ -169,7 +163,6 @@
       </button>
     </div>
   </header>
-  
 
   <!-- Content -->
   <div class="container">
@@ -195,10 +188,9 @@
       <p id="ctaText" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 15px;">
         Register now and get your products in front of beauty experts!
       </p>
-      <button id="ctaBtn" style="font-size: 1.2rem; padding: 14px 28px; font-weight: bold;">
-        Register for Free
-      </button>
+      <button id="ctaBtn">Register for Free</button>
     </div>
+  </div>
 
   <!-- Bottom Navigation Icons -->
   <div class="bottom-nav">
@@ -256,7 +248,7 @@
       document.getElementById("ctaBtn").textContent = t.ctaBtn;
     }
 
-    // Optional: auto load default language
+    // Optional: load default language on page load
     window.addEventListener("DOMContentLoaded", changeLanguage);
   </script>
 </body>
